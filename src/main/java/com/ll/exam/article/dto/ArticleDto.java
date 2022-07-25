@@ -1,4 +1,4 @@
-package com.ll.exam.article;
+package com.ll.exam.article.dto;
 
 public class ArticleDto {
     private int id;

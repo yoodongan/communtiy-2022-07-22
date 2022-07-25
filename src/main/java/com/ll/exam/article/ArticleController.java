@@ -1,6 +1,7 @@
 package com.ll.exam.article;
 
 import com.ll.exam.Rq;
+import com.ll.exam.article.dto.ArticleDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +19,9 @@ public class ArticleController {
         rq.setAttr("articles", articleDocs);
         rq.view("usr/article/list");
 
+    }
+
+    public void showWrite(Rq rq) {
+        rq.view("usr/article/write");
     }
 }
