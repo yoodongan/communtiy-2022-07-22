@@ -83,5 +83,33 @@ public class Rq {
 
         return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
     }
+
+    public String getPathValueByIndex(int index, String defaultValue) {   // index 입력 시 , 해당 path가 무엇인지 알려줌.
+        String[] bits = req.getRequestURI().split("/");
+
+        try {
+            return bits[4 + index];  //  /usr/article/list/free -> 0/1/2/3/ 4가 free 임.
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return defaultValue;
+        }
+    }
+
+    public long getLongPathValueByIndex(int index, long defaultValue) {
+        String value = getPathValueByIndex(index, null);
+
+        if ( value == null ) {
+            return defaultValue;
+        }
+
+        try {
+            return Long.parseLong(value);
+        }
+        catch ( NumberFormatException e ) {
+            return defaultValue;
+        }
+    }
+
+
+
 }
 
