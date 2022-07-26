@@ -24,6 +24,15 @@ public class Rq {
         resp.setContentType("text/html; charset=utf-8");  // 브라우저에게 만든 결과물이 UTF-8 이라고 알린다.
     }
 
+    public String getParam(String paramName, String defaultValue) {
+        String value = req.getParameter(paramName);
+
+        if (value == null || value.trim().length() == 0) {
+            return defaultValue;
+        }
+        return value;
+    }
+
     public int getIntParam(String paramName, int defaultValue) {
         String value = req.getParameter(paramName);
 
@@ -59,5 +68,15 @@ public class Rq {
             throw new RuntimeException(e);
         }
     }
+
+    public String getMethod() {
+        return req.getMethod();
+    }
+
+    public String getPath() {
+        return req.getRequestURI();
+    }
+
+
 }
 
