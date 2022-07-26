@@ -35,4 +35,12 @@ public class ArticleController {
         rq.appendBody("제목 : %s, 내용 : %s".formatted(title, body));
 
     }
+
+    public void showDeatil(Rq rq) {
+        long id = 1;
+        ArticleDto articleDto = articleService.findById(id);
+
+        rq.setAttr("article", articleDto);
+        rq.view("usr/article/detail");
+    }
 }
