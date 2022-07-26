@@ -22,26 +22,26 @@ public class DispatchServlet extends HttpServlet {
 
         switch(rq.getMethod()) {
             case "GET" :
-                switch(rq.getPath()) {
+                switch(rq.getActionPath()) {
                     case "/usr/member/login" :
                         memberController.showLogin(rq);
                         break;
-                    case "/usr/article/list/free" :
+                    case "/usr/article/list" :
                         articleController.showList(rq);
                         break;
-                    case "/usr/article/write/free":
+                    case "/usr/article/write":
                         articleController.showWrite(rq);
                         break;
                 }
+                break;
             case "POST" :
-                switch (rq.getPath()) {
-                    case "/usr/article/write/free" :
+                switch (rq.getActionPath()) {
+                    case "/usr/article/write" :
                         articleController.doWrite(rq);
                         break;
                 }
 
         }
-
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {

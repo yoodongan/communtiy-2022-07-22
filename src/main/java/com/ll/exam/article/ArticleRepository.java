@@ -6,20 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleRepository {
-    private static Long lastId;
     private static List<ArticleDto> datum;
+    private static long lastId;
 
     static {
         datum = new ArrayList<>();
-        lastId = 0L;
+        lastId = 0;
     }
 
     public long write(String title, String body) {
-        long id = ++lastId;
+        long id = ++lastId;   // 왜 2가 되는거지 ?
         ArticleDto newArticleDto = new ArticleDto(id, title, body);
+
         datum.add(newArticleDto);
 
-        return(id);
+        return id;
     }
 
     public List<ArticleDto> findAll() {
