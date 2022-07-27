@@ -2,13 +2,10 @@ package com.ll.exam;
 
 import com.ll.exam.article.ArticleController;
 import com.ll.exam.member.MemberController;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 
 @WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
@@ -35,6 +32,13 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/detail":
                         articleController.showDeatil(rq);
                         break;
+                    case "/usr/article/delete" :
+                        articleController.deleteList(rq);
+                        break;
+                    case "/usr/article/modify" :
+                        articleController.showModifyForm(rq);
+                        break;
+
                 }
                 break;
             case "POST" :
@@ -42,6 +46,10 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/write" :
                         articleController.doWrite(rq);
                         break;
+                    case "/usr/article/modify" :
+                        articleController.doModify(rq);
+                        break;
+
                 }
 
         }

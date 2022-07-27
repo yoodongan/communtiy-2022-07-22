@@ -24,4 +24,14 @@ public class ArticleService {
         return articleRepository.findById(id);
 
     }
+
+    public void deleteById(long id) {
+        articleRepository.deleteById(id);
+
+    }
+
+    public void doModify(long id, String title, String body) {
+        articleRepository.modify(id, title, body);
+
+    }
 }
